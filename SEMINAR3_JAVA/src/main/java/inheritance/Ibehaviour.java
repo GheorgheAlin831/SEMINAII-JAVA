@@ -1,5 +1,5 @@
 package inheritance;
 
 public interface Ibehaviour {
-    public void breath();
+    public  void breath();
 }
