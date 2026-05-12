@@ -1,38 +1,95 @@
+Vehicle Management System
 
-Exercitiu: 
+📘 Problem Statement
 
-Build a simple BankAccount class:
+You are asked to design a simple Vehicle Management System using Java.
 
-owner name
-balance
+The system should model different types of vehicles such as:
 
-deposit()
-withdraw()
+Car
 
-prevent overdraft
+Motorcycle
 
-Then ask:
+Truck
 
-Should balance be public?
-How do we prevent invalid state?
-Where should validation happen?
+All vehicles share some common properties but also have specific behaviors.
 
-This immediately introduces:
+1)-Create an abstract class Vehicle
 
-Encapsulation
-Access modifiers
-Constructors
-Invariants
+It should include:
+
+Private fields:
+
+brand (String)
+
+speed (double)
+
+Constructor to initialize fields
+
+Getter and setter methods (Encapsulation)
+
+2)- create the child classes Car, Motorcycle, Truck that inherit from Vehicle
+
+ 3)Demonstrate Polymorphism
+
+In a Main class:
+
+Create an array of Vehicle
+
+Store different vehicle types inside it
+
+Call move() on each object
+
+4)Compare 2 cars by overriding .equals() method
+
+5) Extend Vehicle
+
+Add encapsulated fields:
+
+id : String (unique)
+mileage : int
+rented : boolean
+Add methods:
+
+public void rent()
+throws error if already rented
+public void returnVehicle(int drivenKm)
+throws error if not rented
+drivenKm must be > 0
+increases mileage, sets rented=false
+Add abstract methods (abstraction + polymorphism):
+
+public abstract boolean needsService();
+public abstract double rentalPrice(int days);
 
 
-Design a simple Library system:
+6) Override per subclass
 
-Book
-Member
+Service rules:
 
-Borrowing system
-But before coding:
-Ask them to draw class diagrams.
-Define responsibilities.
+Car: service every 10,000 km
+Motorcycle: every 6,000 km
+Truck: every 15,000 km
+Pricing rules:
 
-Define relationships (association vs composition).
+Car: 50 * days, +10% if doors ≥ 4
+Motorcycle: 30 * days, +15/day if hasSidecar
+Truck: (80 + 0.02 * loadCapacity) * days
+7) Create Garage (array-based manager)
+
+Fields:
+
+private Vehicle[] fleet;
+private int size;
+Methods:
+
+add(Vehicle v) → fails if full OR duplicate id
+findById(String id) → returns Vehicle or null
+rentById(String id)
+returnById(String id, int drivenKm)
+printAvailable()
+printNeedsService()
+printRentalEstimate(String id, int days)
+8) Create Demo (array-based manager):
+
+Create a garage of capacity 10; Add at least 5 vehicles; Rent 2 of them;
